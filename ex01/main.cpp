@@ -6,20 +6,23 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:52:35 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 11:16:58 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/08 14:38:47 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
-	ClapTrap c;
-	ClapTrap b("Bob");
-	ClapTrap a(b);
-	ClapTrap d;
+	ScavTrap c;
+	ScavTrap b("Serena");
+	ScavTrap a(b);
+	ScavTrap d;
 
+	c.showStats();
+	b.showStats();
 	a.showStats();
 	a.takeDamage(7);
 	a.showStats();
@@ -32,27 +35,16 @@ int main(void)
 	d.showStats();
 	d.attack("enemy");
 	d.showStats();
-	d.attack("enemy");
+	d.guardGate();
+	d.guardGate();
+	for (int i = 0; i < 25;  ++i)
+	{
+		d.attack("enemy");
+		d.takeDamage(25);
+		d.beRepaired(20);
+		d.beRepaired(20);
+		d.showStats();
+	}
 	d.showStats();
-	d.attack("enemy");
-	d.showStats();
-	d.attack("enemy");
-	d.showStats();
-	d.attack("enemy");
-	d.showStats();
-	d.attack("enemy");
-	d.showStats();
-	d.attack("enemy");
-	d.showStats();
-	d.attack("enemy");
-	d.takeDamage(7);
-	d.showStats();
-	d.beRepaired(2);
-	d.showStats();
-	d.takeDamage(7);
-	d.showStats();
-	d.attack("enemy");
-	d.showStats();
-	
 	return (0);
 }

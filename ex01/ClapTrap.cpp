@@ -6,16 +6,20 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:30:55 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 11:14:21 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/08 13:27:43 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap(void) : _name("NoName"), _hp(10), _ep(10), _ad(0)
+ClapTrap::ClapTrap(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default ClapTrap constructor called" << std::endl;
+	this->_name = "VoidTrap";
+	this->_hp = this->_hp_max;
+	this->_ep = this->_ep_max;
+	this->_ad = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &ct)
@@ -26,7 +30,7 @@ ClapTrap::ClapTrap(const ClapTrap &ct)
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap &ct)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment ClapTrap operator called" << std::endl;
 	this->_name = ct._name;
 	this->_hp = ct._hp;
 	this->_ep = ct._ep;
@@ -36,12 +40,16 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &ct)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _ep(10), _ad(0)
+ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "string ClapTrap constructor called" << std::endl;
+	this->_name = name;
+	this->_hp = this->_hp_max;
+	this->_ep = this->_ep_max;
+	this->_ad = 0;
 }
 
 void	ClapTrap::attack(const std::string& target)
