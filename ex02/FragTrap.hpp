@@ -6,7 +6,7 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:08:58 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 14:59:05 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/08 16:08:17 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@
 class FragTrap : public ClapTrap
 {
 	private:
-		std::string					_name;
-		unsigned int				_hp;
 		static const unsigned int	_hp_max = 100;
-		unsigned int				_ep;
 		static const unsigned int	_ep_max = 100;
-		unsigned int				_ad;
 
 	public:
 		FragTrap(void);

@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:08:58 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 16:04:06 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/08 16:26:44 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 # include <iostream>
+# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-class ClapTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
-		static const unsigned int	_hp_max = 10;
-		static const unsigned int	_ep_max = 10;
-	
-	protected:
 		std::string					_name;
-		unsigned int				_hp;
-		unsigned int				_ep;
-		unsigned int				_ad;
+		static const unsigned int	_hp_max = ScavTrap::_hp_max;
+		static const unsigned int	_ep_max = FragTrap::_ep_max;
 
 	public:
-		ClapTrap(void);
-		ClapTrap(const ClapTrap& fix);
-		ClapTrap &operator=(const ClapTrap& f);
-		~ClapTrap(void);
+		DiamondTrap(void);
+		DiamondTrap(const DiamondTrap& fix);
+		DiamondTrap &operator=(const DiamondTrap& f);
+		~DiamondTrap(void);
 
-		ClapTrap(std::string name);
+		DiamondTrap(std::string name);
 
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+		void	whoAmI(void);
+
 		void	showStats(void);
 };
 

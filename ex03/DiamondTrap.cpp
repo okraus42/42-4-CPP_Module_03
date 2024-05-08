@@ -1,89 +1,92 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:30:55 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 17:18:08 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/08 17:59:07 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
-FragTrap::FragTrap(void) : ClapTrap()
+DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap()
 {
-	std::cout << "Default FragTrap constructor called" << std::endl;
-	this->_name = "NoFrag";
-	this->_hp = this->_hp_max;
-	this->_ep = this->_ep_max;
-	this->_ad = 30;
+	std::cout << "Default DiamondTrap constructor called" << std::endl;
+	this->_name = "NoDiamond";
+	ClapTrap::_name = this->_name + "_clap_name";
+	this->_hp = FragTrap::_hp_max;
+	this->_ep = ScavTrap::_ep_max;
+	this->_ad = ScavTrap::_ad;
 }
 
-FragTrap::FragTrap(const FragTrap &st) : ClapTrap(st)
+DiamondTrap::DiamondTrap(const DiamondTrap &dt) : ClapTrap(dt), ScavTrap(dt), FragTrap(dt)
 {
-	std::cout << "Copy FragTrap constructor called" << std::endl;
-	*this = st;
+	std::cout << "Copy DiamondTrap constructor called" << std::endl;
+	*this = dt;
 }
 
-FragTrap&	FragTrap::operator=(const FragTrap &st)
+DiamondTrap&	DiamondTrap::operator=(const DiamondTrap &dt)
 {
-	std::cout << "FragTrap Copy assignment operator called" << std::endl;
-	this->_name = st._name;
-	this->_hp = st._hp;
-	this->_ep = st._ep;
-	this->_ad = st._ad;
+	std::cout << "Diamondtrap Copy assignment operator called" << std::endl;
+	this->_name = dt._name;
+	ClapTrap::_name = dt.ClapTrap::_name;
+	this->_hp = dt._hp;
+	this->_ep = dt._ep;
+	this->_ad = dt._ad;
 	return (*this);
 }
 
-FragTrap::~FragTrap()
+DiamondTrap::~DiamondTrap()
 {
-	std::cout << "FragTrap Destructor called" << std::endl;
+	std::cout << "DiamondTrap Destructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name)
 {
-	std::cout << "string FragTrap constructor called" << std::endl;
+	std::cout << "string DiamondTrap constructor called" << std::endl;
 	this->_name = name;
-	this->_hp = this->_hp_max;
-	this->_ep = this->_ep_max;
-	this->_ad = 30;
+	ClapTrap::_name = this->_name + "_clap_name";
+	this->_hp = FragTrap::_hp_max;
+	this->_ep = ScavTrap::_ep_max;
+	this->_ad = ScavTrap::_ad;
 }
 
-void	FragTrap::attack(const std::string& target)
+void	DiamondTrap::attack(const std::string& target)
 {
 	if (this->_hp && this->_ep)
 	{
 		--this->_ep;
-		std::cout << "FragTrap "
+		std::cout << "DiamondTrap "
 		<< this->_name << " attacks "
 		<< target << " causing "
 		<< this->_ad << " points of damage!" << std::endl;
 	}
 	else
 	{
-		std::cout << "FragTrap "
+		std::cout << "DiamondTrap "
 		<< this->_name
 		<< " does not have hit points or energy points to attack" << std::endl;
 	}
 }
 
-void	FragTrap::takeDamage(unsigned int amount)
+void	DiamondTrap::takeDamage(unsigned int amount)
 {
 	if (amount >= this->_hp)
 		this->_hp = 0;
 	else
 		this->_hp -= amount;
-	std::cout << "FragTrap "
+	std::cout << "DiamondTrap "
 	<< this->_name
 	<< " took damage and now has "
 	<< this->_hp << " hp"
 	<< std::endl;
 }
 
-void	FragTrap::beRepaired(unsigned int amount)
+void	DiamondTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hp && this->_ep && amount)
 	{
@@ -92,7 +95,7 @@ void	FragTrap::beRepaired(unsigned int amount)
 			this->_hp = this->_hp_max;
 		else
 			this->_hp += amount;
-		std::cout << "FragTrap "
+		std::cout << "DiamondTrap "
 		<< this->_name
 		<< " heals itself and now has "
 		<< this->_hp << " hp and "
@@ -101,25 +104,27 @@ void	FragTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		std::cout << "FragTrap "
+		std::cout << "DiamondTrap "
 		<< this->_name
 		<< " does not have hit points or energy points to be repaired"
 		<< std::endl;
 	}
 }
 
-void	FragTrap::highFivesGuys(void)
+void	DiamondTrap::whoAmI(void)
 {
-	std::cout << "FragTrap "
+	std::cout << "DiamondTrap "
 	<< this->_name
-	<< " requests high five on the standard output."
+	<< " or "
+	<< this->ClapTrap::_name
 	<< std::endl;
 }
 
-void	FragTrap::showStats(void)
+void	DiamondTrap::showStats(void)
 {
-	std::cout << "FragTrap ["
+	std::cout << "DiamondTrap ["
 	<< this->_name << "] ["
+	<< this->ClapTrap::_name << "] ["
 	<< this->_hp << " HP] ["
 	<< this->_ep << " EP] ["
 	<< this->_ad << " AD]"

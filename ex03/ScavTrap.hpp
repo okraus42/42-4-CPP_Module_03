@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:08:58 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 16:04:06 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/08 17:29:34 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 # include <iostream>
+# include "ClapTrap.hpp"
 
-class ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
-	private:
-		static const unsigned int	_hp_max = 10;
-		static const unsigned int	_ep_max = 10;
-	
 	protected:
-		std::string					_name;
-		unsigned int				_hp;
-		unsigned int				_ep;
-		unsigned int				_ad;
+		static const unsigned int	_hp_max = 100;
+		static const unsigned int	_ep_max = 50;
+		bool						_gate;
 
 	public:
-		ClapTrap(void);
-		ClapTrap(const ClapTrap& fix);
-		ClapTrap &operator=(const ClapTrap& f);
-		~ClapTrap(void);
+		ScavTrap(void);
+		ScavTrap(const ScavTrap& fix);
+		ScavTrap &operator=(const ScavTrap& f);
+		~ScavTrap(void);
 
-		ClapTrap(std::string name);
+		ScavTrap(std::string name);
 
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+		void	guardGate(void);
+
 		void	showStats(void);
 };
 

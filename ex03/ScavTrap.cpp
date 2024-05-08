@@ -6,7 +6,7 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:30:55 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 15:51:52 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/08 14:15:06 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	std::cout << "Default ScavTrap constructor called" << std::endl;
-	//this->_name = "NoScav";
+	this->_name = "NoScav";
 	this->_hp = this->_hp_max;
 	this->_ep = this->_ep_max;
 	this->_ad = 20;

@@ -6,7 +6,7 @@
 #    By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 10:52:31 by okraus            #+#    #+#              #
-#    Updated: 2024/05/08 11:27:37 by okraus           ###   ########.fr        #
+#    Updated: 2024/05/08 16:03:59 by okraus           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
-%.o:		%.cpp
+%.o:		%.cpp ClapTrap.hpp ScavTrap.hpp
 			$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
