@@ -6,7 +6,7 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:30:55 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 17:59:07 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/09 12:29:38 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,23 @@ DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name)
 	this->_ad = ScavTrap::_ad;
 }
 
-void	DiamondTrap::attack(const std::string& target)
-{
-	if (this->_hp && this->_ep)
-	{
-		--this->_ep;
-		std::cout << "DiamondTrap "
-		<< this->_name << " attacks "
-		<< target << " causing "
-		<< this->_ad << " points of damage!" << std::endl;
-	}
-	else
-	{
-		std::cout << "DiamondTrap "
-		<< this->_name
-		<< " does not have hit points or energy points to attack" << std::endl;
-	}
-}
+// void	DiamondTrap::attack(const std::string& target)
+// {
+// 	if (this->_hp && this->_ep)
+// 	{
+// 		--this->_ep;
+// 		std::cout << "DiamondTrap "
+// 		<< this->_name << " attacks "
+// 		<< target << " causing "
+// 		<< this->_ad << " points of damage!" << std::endl;
+// 	}
+// 	else
+// 	{
+// 		std::cout << "DiamondTrap "
+// 		<< this->_name
+// 		<< " does not have hit points or energy points to attack" << std::endl;
+// 	}
+// }
 
 void	DiamondTrap::takeDamage(unsigned int amount)
 {

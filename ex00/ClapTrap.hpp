@@ -6,7 +6,7 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:08:58 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 16:04:06 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/09 12:19:28 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class ClapTrap
 		static const unsigned int	_hp_max = 10;
 		static const unsigned int	_ep_max = 10;
 	
-	protected:
+	private:
 		std::string					_name;
 		unsigned int				_hp;
 		unsigned int				_ep;

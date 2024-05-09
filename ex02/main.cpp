@@ -6,7 +6,7 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:52:35 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 15:23:03 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/09 12:30:19 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int main(void)
 {
 	FragTrap c;
-	FragTrap b("Serena");
+	FragTrap b("Froggy");
 	FragTrap a(b);
 	FragTrap d;
 

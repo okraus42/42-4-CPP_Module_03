@@ -6,7 +6,7 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:30:55 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 17:18:08 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/09 12:38:11 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,6 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->_hp = this->_hp_max;
 	this->_ep = this->_ep_max;
 	this->_ad = 30;
-}
-
-void	FragTrap::attack(const std::string& target)
-{
-	if (this->_hp && this->_ep)
-	{
-		--this->_ep;
-		std::cout << "FragTrap "
-		<< this->_name << " attacks "
-		<< target << " causing "
-		<< this->_ad << " points of damage!" << std::endl;
-	}
-	else
-	{
-		std::cout << "FragTrap "
-		<< this->_name
-		<< " does not have hit points or energy points to attack" << std::endl;
-	}
 }
 
 void	FragTrap::takeDamage(unsigned int amount)

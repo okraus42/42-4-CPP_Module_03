@@ -6,7 +6,7 @@
 /*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:30:55 by okraus            #+#    #+#             */
-/*   Updated: 2024/05/08 16:01:45 by okraus           ###   ########.fr       */
+/*   Updated: 2024/05/09 12:25:17 by okraus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "Default ClapTrap constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	this->_name = "VoidTrap";
 	this->_hp = this->_hp_max;
 	this->_ep = this->_ep_max;
@@ -30,7 +30,7 @@ ClapTrap::ClapTrap(const ClapTrap &ct)
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap &ct)
 {
-	std::cout << "Copy assignment ClapTrap operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	this->_name = ct._name;
 	this->_hp = ct._hp;
 	this->_ep = ct._ep;
@@ -40,12 +40,12 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &ct)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "string ClapTrap constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	this->_name = name;
 	this->_hp = this->_hp_max;
 	this->_ep = this->_ep_max;
@@ -73,12 +73,13 @@ void	ClapTrap::attack(const std::string& target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (amount >= this->_hp)
-		this->_hp = 0;
-	else
-		this->_hp -= amount;
+		amount = this->_hp;
+	this->_hp -= amount;
 	std::cout << "ClapTrap "
 	<< this->_name
-	<< " took damage and now has "
+	<< " took "
+	<< amount
+	<< " damage and now has "
 	<< this->_hp << " hp"
 	<< std::endl;
 }
@@ -89,12 +90,13 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	{
 		--this->_ep;
 		if (amount >= this->_hp_max - this->_hp)
-			this->_hp = this->_hp_max;
-		else
-			this->_hp += amount;
+			amount = this->_hp_max - this->_hp;
+		this->_hp += amount;
 		std::cout << "ClapTrap "
 		<< this->_name
-		<< " heals itself and now has "
+		<< " heals itself by "
+		<< amount
+		<< " and now has "
 		<< this->_hp << " hp and "
 		<< this->_ep << " ep"
 		<< std::endl;
